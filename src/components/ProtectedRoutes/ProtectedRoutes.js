@@ -3,11 +3,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { useEffect } from 'react';
 import { Initialize, UserUpdate } from '../../socket';
+import { GiMoneyStack } from "react-icons/gi";
+import { SiSessionize } from "react-icons/si";
+import { FaGift } from "react-icons/fa";
+import { RiArrowDropDownLine } from "react-icons/ri"
+import { CgProfile } from "react-icons/cg";
 
 import Model from '../Model';
 function ProtectedRoutes({ children }) {
   const { astro } = useSelector((state) => state.user)
   const [isOpen, setIsOpen] = useState(false)
+  const [OpenEarning, setOpenEarning] = useState(false)
   const [isProfile, setIsProfile] = useState(true)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -98,15 +104,42 @@ function ProtectedRoutes({ children }) {
       }
 
       <aside id="default-sidebar" className={`fixed border-gray-300  border-r top-14 left-0 z-40 w-64 h-screen transition-transform ${!isOpen && "-translate-x-full"} sm:translate-x-0`} aria-label="Sidebar">
-        <div className="h-full px-3 py-4 overflow-y-auto bg-black ">
+        <div className="h-full px-3 py-4 overflow-y-auto bg-black">
           <ul className="space-y-2 font-medium">
             <li>
-              <Link to="/dashboard" className="flex items-center p-2 text-gray-900 rounded-lg bg-red-500 text-white hover:bg-gray-100  hover:text-blue-500 group">
-                <svg className="w-5 h-5 text-black-500 transition duration-75  group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+              <Link to="/dashboardnew" className="flex items-center p-2 text-gray-900 rounded-lg bg-red-500 text-white hover:bg-gray-100  hover:text-black group">
+                <svg className="w-5 h-5 text-black-500 transition duration-75  group-hover:text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                   <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                 </svg>
                 <span className="ms-3">Dashboard</span>
+              </Link>
+              <div className='flex flex-col mt-6' onClick={() => setOpenEarning(!OpenEarning)}>
+                <div className="flex items-center p-2 text-gray-900 rounded-lg bg-red-500 text-white hover:bg-gray-100  hover:text-black group justify-between">
+                  <div className='flex flex-row'>
+                    <GiMoneyStack className="w-5 h-5 text-black-500 transition duration-75  group-hover:text-black" />
+                    <span className="ms-3">Earning</span>
+                  </div>
+                  <RiArrowDropDownLine className="w-7 h-7 text-black-500 transition duration-75  group-hover:text-black" />
+                </div>
+                {
+                  OpenEarning && (
+                    <>
+                      <Link to="/Session-Earning" className="flex items-center p-2 text-gray-900 bg-red-500 text-white hover:bg-gray-100  hover:text-black group mt-1">
+                        <SiSessionize className="w-5 h-5 text-black-500 transition duration-75  group-hover:text-black" />
+                        <span className="ms-3">Session Earning</span>
+                      </Link>
+                      <Link to="/Session-Gift" className="flex items-center p-2 text-gray-900 bg-red-500 text-white hover:bg-gray-100  hover:text-black group">
+                        <FaGift className="w-5 h-5 text-black-500 transition duration-75  group-hover:text-black" />
+                        <span className="ms-3">Gift</span>
+                      </Link>
+                    </>
+                  )
+                }
+              </div>
+              <Link to="/dashboard" className="flex items-center p-2 mt-5 text-gray-900 rounded-lg bg-red-500 text-white hover:bg-gray-100  hover:text-black group">
+                <CgProfile className="w-5 h-5 text-black-500 transition duration-75  group-hover:text-black" />
+                <span className="ms-3">Profile</span>
               </Link>
             </li>
 

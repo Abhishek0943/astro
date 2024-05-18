@@ -31,6 +31,9 @@ import ForgotPassword from './pages/auth/ForgotPassword'
 import Profile from './pages/Profile'
 import AccountEdit from './pages/AccountEdit'
 import { ChatAccept, ChatReject, Initialize, UserUpdate } from './socket';
+import Dashboard from './pages/DashBoard/Dashboard'
+import SessionEarning from './pages/SessionEarning'
+import SessionGift from './pages/SessionGift'
 // import Model from './Components/Component/Model/Model';
 
 function App() {
@@ -57,7 +60,10 @@ function App() {
                 <Route exact path='/forgot-password' element={<ForgotPassword />} />
                 <Route exact path='/*' element={<ProtectedRoutes >
                     <Routes>
+                        <Route exact path='/dashboardnew' element={<Dashboard />} />
                         <Route exact path='/dashboard' element={<Profile />} />
+                        <Route exact path='/Session-Earning' element={<SessionEarning />} />
+                        <Route exact path='/Session-Gift' element={<SessionGift />} />
                         <Route exact path='/account/edit' element={<AccountEdit />} />
                         <Route exact path='/chat/:id' element={<Chats />} />
                         {/* <Route exact path='/current-chat' element={<Chats socketRef={socketRef} setChat={setChat} chat={chat} />} />

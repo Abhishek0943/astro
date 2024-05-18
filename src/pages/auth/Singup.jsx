@@ -29,7 +29,7 @@ function Singup() {
     // dispatch(Verify({ otp: OTP, email: formData.email })).then(
     //   ({ payload }) => payload.success &&
     // navigate("/dashboard");
-    navigate("/*");
+    navigate("/dashboardnew");
     // );
   }
   const renderElem = () => {
