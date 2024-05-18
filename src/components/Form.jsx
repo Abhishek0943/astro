@@ -3,6 +3,8 @@ import { HiMiniXMark } from "react-icons/hi2";
 import { FaCheck } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { StepOne, StepTwo } from "../api/useReducer";
+import Lottie from "lottie-react";
+import AstroAnimation from "../AstroAnimation.json";
 function Form() {
   const { astro } = useSelector((state) => state.user);
   const [step, setStep] = useState(astro.step || 1);
@@ -456,9 +458,10 @@ function Form() {
                 <button
                   type="submit"
                   onClick={() => {
-                    dispatch(StepTwo({ ...verification, id: astro._id })).then(
-                      (e) => e.payload.success && setStep(step + 1)
-                    );
+                    // dispatch(StepTwo({ ...verification, id: astro._id })).then(
+                    //   (e) => e.payload.success &&
+                    setStep(step + 1);
+                    // );
                   }}
                   class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
@@ -471,28 +474,34 @@ function Form() {
         break;
       case 3:
         return (
-          <>
-            <div className="  w-full mt-4 p-3  text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm  flex-col gap-4 sm:text-base   ">
-              <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-10 lg:overflow-visible lg:px-0">
-                <div className="mx-auto   lg:mx-0 lg:max-w-none ">
-                  <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto  lg:w-full  lg:px-8">
-                    <div className="lg:pr-4">
-                      <div className="">
-                        <p className="text-base font-semibold leading-7 text-indigo-600">
-                          Deploy faster
-                        </p>
-                        <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                          A better workflow
-                        </h1>
-                        <p className="mt-6 text-xl leading-8 text-gray-700">
-                          Aliquet nec orci mattis amet quisque ullamcorper
-                          neque, nibh sem. At arcu, sit dui mi, nibh dui, diam
-                          eget aliquam. Quisque id at vitae feugiat egestas.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
+          <div className="flex justify-center align-middle">
+            <div className="  w-[1000px] p-3 text-center text-sm font-medium text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm  flex-col gap-4 sm:text-base   ">
+              <div className="flex justify-center flex-col">
+                <h1 className="mt-2 text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
+                  Your application was submitted successfully
+                </h1>
+                <h3 className="mt-2 text-2xl font-medium tracking-tight text-gray-900 sm:text-1xl">
+                  Grateful for your enrollment, much appreciated
+                </h3>
+                <div className="flex justify-center align-middle">
+                  <Lottie
+                    animationData={AstroAnimation}
+                    loop={true}
+                    className="w-[300px] h-[300px] mt-5"
+                  />
+                </div>
+              </div>
+              <p className="mt-6 text-xl leading-8 text-gray-700">
+                Application is now under process we will get back to you within
+                48 hours
+              </p>
+              <p className="mt-3 text-3l leading-8 text-gray-500">
+                You can contact us at our Email Id-
+              </p>
+              <p className="text-l leading-8 text-gray-500">
+                Astro234@gmail.com
+              </p>
+              {/* 
                   <div className="   lg:mx-auto  lg:w-full    lg:px-8">
                     <div className="lg:pr-4">
                       <div className=" text-base leading-7 text-gray-700 ">
@@ -510,7 +519,6 @@ function Form() {
                           className="mt-8 space-y-8 text-gray-600"
                         >
                           <li className="flex gap-x-3">
-                            {/* <CloudArrowUpIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" /> */}
                             <span>
                               <strong className="font-semibold text-gray-900">
                                 Push to deploy.
@@ -522,7 +530,6 @@ function Form() {
                             </span>
                           </li>
                           <li className="flex gap-x-3">
-                            {/* <LockClosedIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" /> */}
                             <span>
                               <strong className="font-semibold text-gray-900">
                                 SSL certificates.
@@ -532,7 +539,6 @@ function Form() {
                             </span>
                           </li>
                           <li className="flex gap-x-3">
-                            {/* <ServerIcon className="mt-1 h-5 w-5 flex-none text-indigo-600" aria-hidden="true" /> */}
                             <span>
                               <strong className="font-semibold text-gray-900">
                                 Database backups.
@@ -564,11 +570,9 @@ function Form() {
                         </p>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </div> */}
             </div>
-          </>
+          </div>
         );
         break;
     }
